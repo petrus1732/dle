@@ -25,22 +25,46 @@
 header {
     position: fixed;
     top: 0;
+    width: 100vw;
+    padding-top: 15vh;
+    text-shadow: 0.4vw 0.3vw 0.2vw grey;
+    text-align: center;
+    font-size: 4vh;
+}
+
+#header1 {
+    position: fixed;
+    top: 8vh;
+    left: 5vw;
+}
+#header2 {
+    position: fixed;
+    top: 18vh;
+    right: 10vw;
+}
+#header3 {
+    position: fixed;
+    top: 28vh;
+    left: 7vw;
+}
+#header4 {
+    position: fixed;
+    top: 38vh;
+    right: 5vw;
 }
 
 #black-out{
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     z-index: 1;
     animation: darken 1s ease-out reverse forwards;
 }
 
-h1 {
-    width: 100vw;
-    margin: 10vw auto;
-    text-shadow: 0.4vw 0.3vw 0.2vw grey;
-    text-align: center;
-}
+
+
 
 .img-container {
     display: flex;
@@ -96,15 +120,18 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 1.5rem;
-    top: 1.5rem;
+    left: 5vw;
+    top: 5vw;
     background-color: #3a3a3c;
     border-radius: 50%;
     padding: 6px;
-    font-variation-settings: 'opaz' 60;
+    font-size: 7vw;
     color: whitesmoke;
 }
 
+#home:hover {
+    cursor: pointer;
+}
 
 /* answer board -- start */
 #answer-board {
@@ -170,7 +197,7 @@ h1 {
 
 #ENTER {
     width: 12vw;
-    font-size: 3.8vw;
+    font-size: 3.5vw;
 }
 
 .none {

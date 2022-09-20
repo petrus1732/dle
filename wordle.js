@@ -22,15 +22,18 @@ const load = () => {
         }
         i++;
     }
-    let newGuess = document.createElement("div");
-    newGuess.id = "guess" + i;
-    newGuess.className = "guess";
-    document.getElementById('answer-board').appendChild(newGuess);
-    for(let j = 1; j <= wordLength; j++){
-        guess[j] = document.createElement("div");
-        guess[j].id = 'g'+ i + j;
-        guess[j].className = "guess-letter";
-        newGuess.appendChild(guess[j]);
+    pos[0] = i;
+    if (localStorage.getItem('pass' + level) === null){
+        let newGuess = document.createElement("div");
+        newGuess.id = "guess" + i;
+        newGuess.className = "guess";
+        document.getElementById('answer-board').appendChild(newGuess);
+        for(let j = 1; j <= wordLength; j++){
+            guess[j] = document.createElement("div");
+            guess[j].id = 'g'+ i + j;
+            guess[j].className = "guess-letter";
+            newGuess.appendChild(guess[j]);
+        }
     }
 
     let letters = document.getElementsByClassName('letter');
@@ -74,9 +77,12 @@ const press = (e)=> {
                     localStorage.setItem((level + 'g' + pos[0]) + (i+1), color[i])
                 }, 300*i + 150);
             }
+
             for (let i = 0; i < wordLength; i++) {
-                document.getElementById(submit[i]).style.backgroundColor = color[i];
-                localStorage.setItem(level + submit[i], color[i]);
+                if (color[i] !== "#3a3a3c"){
+                    document.getElementById(submit[i]).style.backgroundColor = color[i];
+                    localStorage.setItem(level + submit[i], color[i]);
+                }
             }
             if (color.every((c) => c === '#538d4e')) {
                 if (localStorage.getItem('pass')){
@@ -85,6 +91,7 @@ const press = (e)=> {
                 else {
                     localStorage.setItem('pass', level);
                 }
+                localStorage.setItem('pass' + level, 'true');
                 
                 for (let i = 0; i < wordLength; i++) {
                     setTimeout(() => {
